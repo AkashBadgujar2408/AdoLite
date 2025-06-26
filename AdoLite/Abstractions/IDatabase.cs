@@ -1,8 +1,6 @@
-﻿
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
-
 namespace AdoLite.Abstractions;
 
 public interface IDatabase
@@ -13,4 +11,6 @@ public interface IDatabase
     Task<int> ExecuteNonQueryAsync(DbCommand dbCommand);
     Task<int> ExecuteNonQueryAsync(string storedProcedure);
     Task<int> ExecuteNonQueryAsync(string storedProcedure, params SqlParameter[] parameters);
+    Task<IDictionary<string, object>> ExecuteIDictionaryAsync(DbCommand dbCommand);
+    Task<T> ExecuteObjectAsync<T>(DbCommand dbCommand);
 }
